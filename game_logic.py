@@ -34,7 +34,12 @@ def play_game():
 
     while mistakes < len(STAGES)-1 and not all(letter in guessed_letters for letter in secret_word):
         display_game_state(mistakes, secret_word, guessed_letters)
+
         guess = input("Guess a letter: ").lower()
+        if len(guess) != 1 or not guess.isalpha():
+            print("❌Incorrect input! Enter any alphabet letter.")
+            continue
+
         if guess in secret_word:
             guessed_letters.append(guess)
             print(guessed_letters)
@@ -48,6 +53,7 @@ def play_game():
         print("You saved the Snowman, hooray!👌🥳")
 
     print(f"The secret word was: '{secret_word}'")
+
 
 
 if __name__ == "__main__":
